@@ -1,0 +1,18 @@
+I noticed that there was no ASPECT for Inspired Panache showing up on the PDFs.  Also, the value generated on the regular character
+sheets for Inspired Panache was always 0.
+
+Here's my substitution for Inspired Panache in line 4672 of the acg_abilities_class.lst list in the 
+PCGen\PCGen60601\data\pathfinder\paizo\roleplaying_game\advanced_class_guide folder.
+
+
+Code:
+
+Inspired Panache                                    KEY:Inspired Blade ~ Inspired Panache                            CATEGORY:Special Ability    TYPE:Swashbuckler Class Feature.ArchetypeAbility.SpecialQuality.Extraordinary.Panache        DEFINE:PanachePoints|0        DEFINE:InspiredBladeDefaultPanache|0        DEFINE:FavoredClassBonus|0        DESC:Each day, an inspired blade gains %1 panache points. Unlike other swashbucklers, an inspired blade gains no panache from a killing blow. She gains panache only from scoring a critical hit with a rapier. This ability alters the panache class feature.|PanachePoints        BONUS:VAR|PanachePoints|InspiredBladeDefaultPanache    BONUS:VAR|PanachePoints|FavoredClassBonus    BONUS:VAR|InspiredBladeDefaultPanache|MAX(1,CHA)+MAX(1,INT)    BONUS:VAR|FavoredClassBonus|(ElfSwashbucklerFavClassBonus/4)+(HumanSwashbucklerFavClassBonus/4)        ASPECT:CheckType|Points    ASPECT:CheckCount|%1|PanachePoints    SOURCEPAGE:p.125
+
+
+
+Notes;  The code for BONUS:VAR|FavoredClassBonus looks a bit clumsy to me, but it was the only way I could grab the value for
+the Favored Class Bonus that Elves and Humans get.
+
+
+--B---------------------
